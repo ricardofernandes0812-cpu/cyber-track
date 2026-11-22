@@ -1,7 +1,31 @@
 
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cyber Track</title><style>
 :root{--navy:#06145f;--blue:#063dca;--cyan:#00d7ff;--green:#43e000;--panel:#0a267f;--line:#1c7dff;--white:#fff;--muted:#b9d8ff;--red:#ff5c69;--yellow:#ffd34d}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1039bd 0,#06145f 60%,#030b38 100%);font-family:Arial,sans-serif;color:var(--white);min-height:100vh}header{padding:16px 18px;border-bottom:1px solid #1e83ff;background:#05104de8;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}h1{margin:0;font-size:23px;letter-spacing:1px}header small{color:var(--cyan)}button,.btn{border:1px solid #5baaff;border-radius:5px;padding:10px 12px;background:#103ca8;color:#fff;font-weight:bold;cursor:pointer;margin:3px}button:active{transform:scale(.98)}button.primary{background:var(--green);color:#08235c;border-color:#9aff68}button.danger{background:#a82345}button.light{background:#087bff}.shell{display:grid;grid-template-columns:155px 1fr;min-height:calc(100vh - 65px)}nav{padding:10px;border-right:1px solid #1c7dff;background:#04104de0}nav button{width:100%;text-align:left;margin:4px 0;background:#082a88;border-color:#297fff;font-size:12px}.main{padding:16px;min-width:0}.card{background:#071e70e8;border:1px solid #247fff;border-radius:8px;padding:14px;margin-bottom:13px;box-shadow:0 5px 16px #0002}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}.metric{font-size:27px;font-weight:bold;color:var(--cyan);margin-top:8px}.muted{color:var(--muted);font-size:12px}.title{font-size:18px;font-weight:bold;margin:0 0 12px}label{display:block;font-size:12px;color:var(--muted);margin:9px 0 4px}input,select,textarea{width:100%;padding:10px;border-radius:4px;border:1px solid #80baff;background:#f8fbff;color:#10204d;font-size:14px}textarea{min-height:75px}form{max-width:700px}.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}table{width:100%;border-collapse:collapse;font-size:12px;min-width:520px}th,td{border-bottom:1px solid #2454b4;padding:9px;text-align:left;vertical-align:top}th{color:var(--cyan);background:#061758} .tablewrap{overflow:auto}.pill{display:inline-block;padding:4px 7px;border-radius:20px;background:#1245aa;font-size:11px}.ok{color:var(--green)}.warn{color:var(--yellow)}.bad{color:#ff7b85}.hidden{display:none!important}.login{max-width:420px;margin:9vh auto;padding:22px}.floor{display:grid;grid-template-columns:repeat(5,minmax(45px,1fr));gap:7px}.desk{padding:9px 2px;border:1px solid #67c9ff;background:#0c3d9a;border-radius:4px;text-align:center;font-size:11px;cursor:pointer}.desk.in{background:#1e6e2d;border-color:#65ff76}.desk.out{background:#783044;border-color:#ff7d8a}.alertitem{padding:9px;border-bottom:1px solid #244b9c}.foot{font-size:11px;color:#8dbbff;text-align:center;padding:12px}@media(max-width:650px){.shell{grid-template-columns:1fr}nav{display:grid;grid-template-columns:repeat(2,1fr);border-right:0;border-bottom:1px solid #1c7dff}nav button{font-size:11px;padding:8px}.main{padding:10px}h1{font-size:19px}.login{margin:4vh 12px}.floor{grid-template-columns:repeat(4,minmax(40px,1fr))}}
-</style></head><body><div id="loginView" class="login card"><h1 style="text-align:center">CYBER TRACK</h1><p style="text-align:center;color:var(--cyan)">RASTREAMENTO DE MALETAS DIDÁTICAS • SENAI</p><label>E-mail</label><input id="loginUser" autocomplete="username" placeholder="Usuário"><label>Senha</label><input id="loginPass" type="password" autocomplete="current-password" placeholder="Senha"><button class="primary" style="width:100%;margin:12px 0" onclick="login()">Entrar</button><div id="loginMsg" class="bad"></div></div>
+</style><style id="cyber-room-styles">
+.room-layout{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:14px;align-items:start}
+.room-stage{position:relative;overflow:hidden;min-height:380px;border:3px solid #1b8edc;border-radius:12px;background:repeating-linear-gradient(0deg,transparent 0 63px,#d0d9e5 64px),repeating-linear-gradient(90deg,#e8eef5 0 63px,#d0d9e5 64px);box-shadow:inset 0 0 35px #a7b5c8}
+.room-door{position:absolute;top:0;left:16px;width:46px;height:70px;background:#a96b34;border:3px solid #784821;border-top:0;border-radius:0 0 5px 5px;transform:skewY(-12deg);z-index:2}
+.room-teacher{position:absolute;top:18px;right:20px;width:118px;height:42px;border-radius:6px;background:#fff;box-shadow:0 7px 0 #b3c3d1;display:flex;align-items:center;justify-content:center;color:#263d5a;font-size:10px;font-weight:bold}
+.room-row{position:absolute;left:12%;right:12%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;background:#fff;border:1px solid #b6c4d3;border-radius:7px;box-shadow:0 9px 0 #c3ced9,0 13px 14px #0002;padding:12px 5px 8px}
+.room-row.first{top:27%}.room-row.second{top:65%}
+.room-seat{position:relative;min-width:0;height:53px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:4px}
+.room-screen{width:38px;max-width:75%;height:19px;background:#17273b;border:3px solid #27394d;border-radius:3px;box-shadow:0 3px 0 #647586}
+.room-chair{position:absolute;bottom:-27px;width:29px;height:25px;border-radius:8px 8px 12px 12px;background:#26374c;border:3px solid #1b2b40;box-shadow:0 6px 0 -2px #25364a}
+.room-case{position:absolute;top:0;left:50%;transform:translateX(-50%);width:49px;max-width:95%;height:31px;border:2px solid #fff;border-radius:6px;box-shadow:0 2px 9px #0005;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;white-space:nowrap;color:#fff}
+.room-case.inside{background:#15834c}.room-case.outside{background:#bc3345}.room-case.maintenance{background:#ba801b}.room-case.unknown{background:#64748b}
+.room-case:before{content:'';position:absolute;width:15px;height:5px;top:-7px;border:3px solid currentColor;border-bottom:0;border-radius:4px 4px 0 0}
+.room-info{display:grid;gap:10px}
+.room-status{border:1px solid #2b78d8;border-radius:9px;padding:12px;background:#071e70}
+.room-status-head{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.room-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;background:#94a3b8}
+.room-dot.inside{background:#3ce08c}.room-dot.outside{background:#ff6876}.room-dot.maintenance{background:#ffd34d}
+.room-legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:#b9d8ff;margin-top:10px}
+.room-note{font-size:11px;color:#b9d8ff;line-height:1.5}
+.room-small{font-size:11px;color:#b9d8ff;margin-top:7px;word-break:break-word}
+@media(max-width:780px){.room-layout{grid-template-columns:1fr}.room-info{grid-template-columns:repeat(2,minmax(0,1fr))}.room-stage{min-height:330px}.room-row{left:8%;right:8%}}
+@media(max-width:420px){.room-info{grid-template-columns:1fr}.room-stage{min-height:310px}.room-case{font-size:9px;width:43px}.room-row{left:6%;right:6%}}
+</style>
+</head><body><div id="loginView" class="login card"><h1 style="text-align:center">CYBER TRACK</h1><p style="text-align:center;color:var(--cyan)">RASTREAMENTO DE MALETAS DIDÁTICAS • SENAI</p><label>E-mail</label><input id="loginUser" autocomplete="username" placeholder="Usuário"><label>Senha</label><input id="loginPass" type="password" autocomplete="current-password" placeholder="Senha"><button class="primary" style="width:100%;margin:12px 0" onclick="login()">Entrar</button><div id="loginMsg" class="bad"></div></div>
 <div id="app" class="hidden"><header><div><h1>CYBER TRACK</h1><small>RASTREAMENTO RFID • SENAI</small></div><div><span id="who"></span> <span id="clock"></span> <button onclick="logout()" class="danger">Sair</button></div></header><div class="shell"><nav id="nav"></nav><main class="main"><section id="page"></section><div class="foot">Cyber Track • Protótipo acadêmico • Dados sincronizados na nuvem • Supabase</div></main></div></div>
 <script>
 const $=id=>document.getElementById(id);let user=null,section='Painel inicial';const KEY='cybertrack_v1';let db={users:[],cases:[],events:[],alerts:[],settings:{room:'Sala de Automação',lateHours:4,requireAuth:true},notifications:[]};
@@ -112,4 +136,60 @@ cloud.auth.getUser().then(({data})=>{if(data?.user)startCloud(data.user)}).catch
 $('loginUser').type='email';$('loginUser').placeholder='E-mail cadastrado no Supabase';
 $('loginPass').addEventListener('keydown',e=>{if(e.key==='Enter')login()});
 
-</script></body></html>
+</script><script>
+/* Painel visual da sala: consulta somente dados já sincronizados do Supabase. */
+const roomTags=[
+ {uid:'CFD37AFC',label:'Maleta 1',seat:0},
+ {uid:'E3C30303',label:'Maleta 2',seat:7}
+];
+function roomState(c){
+ if(!c)return {kind:'unknown',label:'Não cadastrada'};
+ const st=String(c.status||'').toLowerCase();
+ if(st==='dentro')return {kind:'inside',label:'Dentro da sala'};
+ if(st==='fora')return {kind:'outside',label:'Fora da sala'};
+ if(st.includes('manuten'))return {kind:'maintenance',label:'Em manutenção'};
+ return {kind:'unknown',label:'Status indefinido'};
+}
+function roomCard(tag){
+ const c=db.cases.find(x=>normUID(x.rfid)===tag.uid);
+ const state=roomState(c);
+ const events=db.events.filter(e=>normUID(e.rfid)===tag.uid);
+ const last=events[0];
+ const entry=events.filter(e=>e.type==='Entrada').length;
+ const exit=events.filter(e=>e.type==='Saída').length;
+ return `<div class="room-status"><div class="room-status-head"><strong>${tag.label}</strong><span class="pill"><span class="room-dot ${state.kind}"></span>${state.label}</span></div><div class="room-small">${c?esc(c.name):'UID ainda não cadastrado'} · RFID ${tag.uid}</div><div class="room-small">Entradas: <b>${entry}</b> &nbsp; Saídas: <b>${exit}</b></div><div class="room-small">Última movimentação: ${last?esc(last.type)+' — '+esc(last.time):'Nenhuma registrada'}</div></div>`;
+}
+function roomSeat(index){
+ const tag=roomTags.find(x=>x.seat===index);
+ const c=tag&&db.cases.find(x=>normUID(x.rfid)===tag.uid);
+ const state=roomState(c);
+ return `<div class="room-seat"><div class="room-screen"></div>${tag?`<div class="room-case ${state.kind}" title="${esc(tag.label)}: ${state.label}">${tag.label==='Maleta 1'?'M1':'M2'}</div>`:''}<div class="room-chair"></div></div>`;
+}
+dashboard=function(){
+ const items=roomTags.map(t=>({tag:t,c:db.cases.find(x=>normUID(x.rfid)===t.uid)}));
+ const inside=items.filter(x=>roomState(x.c).kind==='inside').length;
+ const outside=items.filter(x=>roomState(x.c).kind==='outside').length;
+ const last=db.events.find(e=>roomTags.some(t=>t.uid===normUID(e.rfid)));
+ return `<h2 class="title">PAINEL INICIAL — SALA DE AUTOMAÇÃO</h2>
+ <div class="grid">
+ <div class="card">Maletas monitoradas<div class="metric">2</div></div>
+ <div class="card">Dentro da sala<div class="metric ok">${inside}</div></div>
+ <div class="card">Fora da sala<div class="metric warn">${outside}</div></div>
+ <div class="card">Última atualização<div class="metric" style="font-size:15px">${cloudReady?'Sincronizado':'Aguardando nuvem'}</div></div>
+ </div>
+ <div class="card">
+ <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap"><h3 class="title" style="margin:0">VISÃO DA SALA — CYBER TRACK</h3><button onclick="syncCloud()" class="primary">Atualizar sala</button></div>
+ <p class="room-note">Representação ilustrativa baseada na tela do Elipse E3. A cor indica o status registrado no Supabase; não representa localização física detectada por sensores.</p>
+ <div class="room-layout">
+ <div><div class="room-stage" role="img" aria-label="Sala ilustrativa com oito computadores e duas maletas, com cores de acordo com os status registrados">
+ <div class="room-door" title="Porta de acesso"></div><div class="room-teacher">MESA DO PROFESSOR</div>
+ <div class="room-row first">${[0,1,2,3].map(roomSeat).join('')}</div>
+ <div class="room-row second">${[4,5,6,7].map(roomSeat).join('')}</div>
+ </div><div class="room-legend"><span><span class="room-dot inside"></span>Dentro</span><span><span class="room-dot outside"></span>Fora</span><span><span class="room-dot maintenance"></span>Manutenção</span><span><span class="room-dot"></span>Indefinido</span></div></div>
+ <div class="room-info">${roomTags.map(roomCard).join('')}</div>
+ </div></div>
+ <div class="card"><h3 class="title">Última movimentação RFID</h3>${last?`<strong>${esc(last.type)}</strong> — ${esc(last.code||last.name)}<div class="room-small">${esc(last.time)} · ${esc(last.source||'RFID')}</div>`:'Nenhuma movimentação registrada.'}
+ <div style="margin-top:12px"><button class="primary" onclick="go('Movimentações')">Ver movimentações</button><button onclick="go('Cadastro de maletas')">Ver maletas</button></div></div>`;
+};
+</script>
+</body></html>
